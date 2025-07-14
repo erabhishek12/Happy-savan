@@ -13,15 +13,15 @@
         body {
             margin: 0;
             font-family: 'Mukta', sans-serif;
+            background-color: #000;
             color: white;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
             cursor: none;
-            background: #000;
         }
         
         #background-animation {
@@ -87,7 +87,7 @@
         }
 
         h1 {
-            font-size: 2.8em;
+            font-size: clamp(2.2em, 8vw, 2.8em);
             color: #FF8C00;
             text-shadow: 0 0 3px black, 0 0 5px #FFA500, 0 0 15px #FFD700, 0 0 25px #FF8C00;
             margin-bottom: 5px;
@@ -101,7 +101,7 @@
         }
 
         #greetingMessage {
-            font-size: 1.1em;
+            font-size: clamp(1em, 3vw, 1.1em);
             margin-bottom: 15px;
             min-height: 40px;
             text-shadow: 0 0 3px black, 0 0 2px black;
@@ -116,7 +116,8 @@
         }
 
         #nameInput {
-            width: calc(100% - 22px);
+            box-sizing: border-box;
+            width: 100%;
             padding: 12px;
             border-radius: 10px;
             border: 1px solid #FFA500;
@@ -159,7 +160,7 @@
         .facebook { background: #1877F2; }
         .share-native { background: #FF8C00; }
         .share-btn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
-        .ad-container { margin: 15px 0; }
+        .ad-container { margin-top: 25px; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 15px;}
 
         .cursor-sparkle {
             position: fixed;
@@ -173,6 +174,12 @@
             opacity: 1;
             box-shadow: 0 0 10px #FFD700, 0 0 15px #FFA500;
             z-index: 3;
+        }
+        
+        @media (max-width: 480px) {
+            .container { padding: 20px 15px; }
+            h1 { font-size: 2.2em; }
+            #greetingMessage { font-size: 1em; }
         }
     </style>
 </head>
@@ -189,22 +196,8 @@
         
         <img id="mainSavanGif" src="" alt="Mahakal GIF" class="savan-gif">
         
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = { 'key' : '031c6c99aefe366399703bc22686c473', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/031c6c99aefe366399703bc22686c473/invoke.js"></script>
-        </div>
-
         <input type="text" id="nameInput" placeholder="यहाँ अपना नाम लिखें...">
         
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = { 'key' : '58ace13a066e40d398a524a05d92a883', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/58ace13a066e40d398a524a05d92a883/invoke.js"></script>
-        </div>
-
         <div id="share-section">
             <p>नीचे दिए गए बटन से Share करें:</p>
             <div class="share-buttons">
@@ -213,6 +206,17 @@
                 <a id="facebook-share" class="share-btn facebook" href="#" target="_blank">Facebook</a>
                 <button id="native-share" class="share-btn share-native">Share</button>
             </div>
+        </div>
+
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = { 'key' : '031c6c99aefe366399703bc22686c473', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/031c6c99aefe366399703bc22686c473/invoke.js"></script>
+            <script type="text/javascript">
+                atOptions = { 'key' : '58ace13a066e40d398a524a05d92a883', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/58ace13a066e40d398a524a05d92a883/invoke.js"></script>
         </div>
     </div>
 
@@ -227,7 +231,7 @@
         document.getElementById('background-animation').style.backgroundImage = `url('${backgroundGifURL}')`;
 
         document.body.addEventListener('click', function() {
-            document.getElementById('savanSong').play().catch(e => console.log("Audio play failed."));
+            document.getElementById('savanSong').play().catch(e => {});
         }, { once: true });
 
         for(let i = 0; i < 20; i++) {
@@ -235,16 +239,9 @@
         }
 
         document.addEventListener('mousemove', function(e) {
-            let sparkle = document.createElement('div');
-            sparkle.className = 'cursor-sparkle';
-            document.body.appendChild(sparkle);
-            sparkle.style.left = e.pageX + 'px';
-            sparkle.style.top = e.pageY + 'px';
-            setTimeout(() => {
-                sparkle.style.transform = 'scale(0)';
-                sparkle.style.opacity = '0';
-                setTimeout(() => sparkle.remove(), 200);
-            }, 10);
+            let sparkle = document.createElement('div'); sparkle.className = 'cursor-sparkle'; document.body.appendChild(sparkle);
+            sparkle.style.left = e.pageX + 'px'; sparkle.style.top = e.pageY + 'px';
+            setTimeout(() => { sparkle.style.transform = 'scale(0)'; sparkle.style.opacity = '0'; setTimeout(() => sparkle.remove(), 200); }, 10);
         });
 
         const greetingMessage = document.getElementById('greetingMessage');
