@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="सावन की हार्दिक शुभकामनाएँ!"/>
+    <meta property="og:description" content="इस पावन अवसर पर अपनी शुभकामनाएँ भेजें।"/>
+    <meta property="og:image" content="https://i.pinimg.com/originals/1c/91/3c/1c913c545b3b1923293e2840742f5677.gif"/>
+    <title>हर हर महादेव!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Mukta', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            cursor: none;
+            background: #000;
+        }
+        
+        #background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            opacity: 0.4;
+            animation: zoom-pan 60s infinite linear alternate;
+            z-index: 1;
+        }
+
+        @keyframes zoom-pan {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.3); }
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 165, 0, 0.7);
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 20s infinite linear;
+            box-shadow: 0 0 10px #FFA500, 0 0 15px #FFD700;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.85);
+            padding: 25px 35px;
+            border-radius: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 420px;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent; 
+            z-index: 4;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: conic-gradient(transparent, #FFA500, #FFD700, #FF8C00, transparent);
+            animation: rotateBorder 6s linear infinite;
+            z-index: -1;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #FF8C00;
+            text-shadow: 0 0 3px black, 0 0 5px #FFA500, 0 0 15px #FFD700, 0 0 25px #FF8C00;
+            margin-bottom: 5px;
+            font-weight: 700;
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { text-shadow: 0 0 3px black, 0 0 5px #FFA500, 0 0 15px #FFD700, 0 0 25px #FF8C00; }
+            50% { text-shadow: 0 0 5px black, 0 0 10px #FFA500, 0 0 25px #FFD700, 0 0 40px #FF8C00; }
+        }
+
+        #greetingMessage {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            min-height: 40px;
+            text-shadow: 0 0 3px black, 0 0 2px black;
+        }
+
+        .savan-gif {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border: 3px solid #FF8C00;
+        }
+
+        #nameInput {
+            width: calc(100% - 22px);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #FFA500;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1em;
+            font-family: 'Mukta', sans-serif;
+            text-align: center;
+        }
+
+        #share-section {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .share-btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .whatsapp { background: #25D366; }
+        .telegram { background: #0088cc; }
+        .facebook { background: #1877F2; }
+        .share-native { background: #FF8C00; }
+        .share-btn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+        .ad-container { margin: 15px 0; }
+
+        .cursor-sparkle {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #FFD700;
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.1s, opacity 0.2s;
+            transform: scale(1);
+            opacity: 1;
+            box-shadow: 0 0 10px #FFD700, 0 0 15px #FFA500;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div id="background-animation"></div>
+
+    <audio id="savanSong" loop>
+        <source id="savanSongSource" src="" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <h1>🔱 हर हर महादेव! 🔱</h1>
+        <p id="greetingMessage">इस पावन सावन में, महादेव आपकी हर मनोकामना पूरी करें।</p>
+        
+        <img id="mainSavanGif" src="" alt="Mahakal GIF" class="savan-gif">
+        
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = { 'key' : '031c6c99aefe366399703bc22686c473', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/031c6c99aefe366399703bc22686c473/invoke.js"></script>
+        </div>
+
+        <input type="text" id="nameInput" placeholder="यहाँ अपना नाम लिखें...">
+        
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = { 'key' : '58ace13a066e40d398a524a05d92a883', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/58ace13a066e40d398a524a05d92a883/invoke.js"></script>
+        </div>
+
+        <div id="share-section">
+            <p>नीचे दिए गए बटन से Share करें:</p>
+            <div class="share-buttons">
+                <a id="whatsapp-share" class="share-btn whatsapp" href="#" target="_blank">WhatsApp</a>
+                <a id="telegram-share" class="share-btn telegram" href="#" target="_blank">Telegram</a>
+                <a id="facebook-share" class="share-btn facebook" href="#" target="_blank">Facebook</a>
+                <button id="native-share" class="share-btn share-native">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const songURL = "Mahadev.mp3"; 
+        const mainGifURL = "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyazZkczUwazZpZ2I0eDY0ZWUxdjY3cXd6djZpcDU2aTZjcng1dmowdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4QKCpkepbnMYnNOELU/giphy.gif";
+        const backgroundGifURL = "https://tenor.com/q8zL7hiROUt.gif";
+
+        document.getElementById('savanSongSource').src = songURL;
+        document.getElementById('savanSong').load();
+        document.getElementById('mainSavanGif').src = mainGifURL;
+        document.getElementById('background-animation').style.backgroundImage = `url('${backgroundGifURL}')`;
+
+        document.body.addEventListener('click', function() {
+            document.getElementById('savanSong').play().catch(e => console.log("Audio play failed."));
+        }, { once: true });
+
+        for(let i = 0; i < 20; i++) {
+            let p = document.createElement('div'); p.className = 'particle'; let s = Math.random() * 8 + 2; p.style.width = `${s}px`; p.style.height = `${s}px`; p.style.left = `${Math.random() * 100}%`; p.style.animationDelay = `${Math.random() * 20}s`; p.style.animationDuration = `${Math.random() * 10 + 10}s`; document.body.appendChild(p);
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            let sparkle = document.createElement('div');
+            sparkle.className = 'cursor-sparkle';
+            document.body.appendChild(sparkle);
+            sparkle.style.left = e.pageX + 'px';
+            sparkle.style.top = e.pageY + 'px';
+            setTimeout(() => {
+                sparkle.style.transform = 'scale(0)';
+                sparkle.style.opacity = '0';
+                setTimeout(() => sparkle.remove(), 200);
+            }, 10);
+        });
+
+        const greetingMessage = document.getElementById('greetingMessage');
+        const nameInput = document.getElementById('nameInput');
+        const shareSection = document.getElementById('share-section');
+
+        window.onload = () => {
+            const p = new URLSearchParams(window.location.search); const f = p.get('from'); if(f) { try { const sN=atob(f); greetingMessage.innerHTML=`<span style="color:#FFA500; font-weight:bold;">${sN}</span> की तरफ से आपको और आपके परिवार को सावन की ढेर सारी शुभकामनाएँ!`; document.title=`${sN} sent you a Sawan Wish!`; } catch(e){} }
+        };
+
+        let shareLink = "", shareText = "";
+        nameInput.addEventListener('input', function() {
+            const sN = nameInput.value.trim();
+            if(sN) {
+                const bU = window.location.origin + window.location.pathname; const eS = btoa(sN); shareLink = `${bU}?from=${eS}`; shareText = `*${sN}* की तरफ से आपको सावन की शुभकामनाएँ! 🔱📿 अपनी wish बनाने के लिए लिंक पर क्लिक करें:`;
+                document.getElementById('whatsapp-share').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}%0A${encodeURIComponent(shareLink)}`;
+                document.getElementById('telegram-share').href = `https://t.me/share/url?url=${encodeURIComponent(shareLink)}&text=${encodeURIComponent(shareText)}`;
+                document.getElementById('facebook-share').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareLink)}`;
+                shareSection.style.display='block';
+            } else { shareSection.style.display='none'; }
+        });
+        
+        document.getElementById('native-share').addEventListener('click', async () => { if(navigator.share){try{await navigator.share({title:'सावन की शुभकामनाएँ!', text:shareText, url:shareLink});}catch(e){}}else{alert('Native share not supported.');}});
+    </script>
+    
+    <script type='text/javascript' src='//pl26995047.profitableratecpm.com/1e/da/b6/1edab67fa3a8a6f705d674fecab9f1ca.js'></script>
+    <script type='text/javascript' src='//pl27003358.profitableratecpm.com/1c/22/eb/1c22ebd4000dc73bee9a2a926ee9c5e8.js'></script>
+</body>
+</html>
